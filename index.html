@@ -52,7 +52,52 @@ h1{font-size:clamp(42px,5.2vw,76px);line-height:1.06;margin:15px 0 15px;letter-s
 @media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tile.large,.tile.wide{grid-column:span 2}.tile,.tile.large,.tile.wide{min-height:205px}}
 @media(max-width:600px){.wrap{width:calc(100% - 28px)}.header{height:66px}.main{padding:24px 0}.eyebrow{font-size:10px}h1{font-size:clamp(38px,10vw,55px);margin:14px 0}.intro{font-size:13px}.sectionhead{margin-top:28px}.grid{gap:11px}.tile,.tile.large,.tile.wide{min-height:172px;padding:18px;border-radius:20px}.tile.large,.tile.wide{grid-column:span 2;min-height:185px}.tile h3,.tile.large h3{font-size:20px}.tile p,.tile.large p{font-size:12px}.glyph,.tile.large .glyph{width:46px;height:46px;font-size:22px;border-radius:14px}}
 @media(max-width:350px){.tile{grid-column:span 2}}
-</style></head><body><div class="wrap"><header class="header"><a href="/" class="brand" aria-label="LAOXU HUB 首页">LAOXU<b>.</b> HUB</a><nav class="nav" aria-label="主要导航"><a href="archive.html">数字花园</a><a href="https://github.com/xyh421" target="_blank" rel="noopener noreferrer">GitHub</a><button id="styleToggle" class="theme style-trigger" type="button" aria-label="选择网站配色" aria-expanded="false" aria-controls="stylePanel" title="选择配色">◈</button><button id="theme" class="theme" type="button" aria-label="切换主题" title="切换深浅色主题">☾</button></nav></header><aside id="stylePanel" class="style-panel" hidden aria-label="网站配色选择"><div class="style-heading"><strong>选择喜欢的风格</strong><button id="closeStyle" type="button" aria-label="关闭配色面板">✕</button></div><p>7 种动态背景 · 自动记住你的选择</p><div id="styleOptions" class="style-options"></div></aside><main class="main"><div class="eyebrow">A PERSONAL DIGITAL SPACE</div><h1>Your space.<br><em>Everything in reach.</em></h1><p class="intro">你的个人数字工作台。常用网站，一眼找到，一键直达。</p><div class="sectionhead"><h2>快速访问</h2><span id="count" aria-live="polite"></span></div><section class="grid" id="grid" aria-label="网站导航"></section><p id="empty" class="empty" hidden>没有找到匹配的网站，换个关键词试试。</p></main><footer class="footer"><span>© LAOXU HUB · Made for curiosity.</span><span>Independent · Private · Thoughtfully crafted</span></footer></div>
+
+/* LAOXU OS 2.0 — layout and material system */
+:root{--panel:#ffffffb9;--stroke:#ffffffad;--soft:#fff9;--osshadow:0 18px 60px #1c30431a;--osink:#172b3e;--osmuted:#607486;--osaccent:#3d6d92;--osbg:#e9eff4;--orb1:#d0e0ef;--orb2:#dce5ed}
+[data-palette="ice"]{--osbg:#e9f1f8;--panel:#ffffffbc;--stroke:#ffffffdc;--osink:#1a354c;--osmuted:#57758a;--osaccent:#3e80aa;--orb1:#b3d9f4;--orb2:#d6c9f5}
+[data-palette="graphite"]{--osbg:#e5e6e8;--panel:#ffffffb7;--stroke:#ffffffd9;--osink:#262b30;--osmuted:#626a72;--osaccent:#495866;--orb1:#c5c9ce;--orb2:#e0e1e5}
+[data-palette="ivory"]{--osbg:#f4eee4;--panel:#fffaf1d6;--stroke:#ffffffdd;--osink:#3d3026;--osmuted:#806d5b;--osaccent:#ad7851;--orb1:#f5d6b5;--orb2:#eee0c6}
+[data-palette="sage"]{--osbg:#e6ede6;--panel:#fafff6c9;--stroke:#ffffffdd;--osink:#243c32;--osmuted:#627a6d;--osaccent:#4c8065;--orb1:#bdd8c0;--orb2:#e3e7c6}
+[data-palette="lavender"]{--osbg:#efedf8;--panel:#faf8ffce;--stroke:#ffffffd9;--osink:#36304f;--osmuted:#77718c;--osaccent:#806ab0;--orb1:#d6c9f6;--orb2:#d0e2ff}
+[data-palette="midnight"]{color-scheme:dark;--osbg:#0c101b;--panel:#202736c4;--stroke:#ffffff20;--osink:#f2f5ff;--osmuted:#a2adc1;--osaccent:#a5b8fa;--orb1:#25395f;--orb2:#343053;--osshadow:0 18px 60px #0004}
+[data-palette="aurora"]{color-scheme:dark;--osbg:#081918;--panel:#18322ec4;--stroke:#ffffff20;--osink:#e9fff4;--osmuted:#9fc2b3;--osaccent:#8ee0bd;--orb1:#1d574b;--orb2:#153e52;--osshadow:0 18px 60px #0005}
+html{min-width:320px}body{background:var(--osbg);color:var(--osink);overflow-x:hidden}
+body:before{background:radial-gradient(ellipse 35% 45% at 15% 24%,var(--orb1),transparent 100%),radial-gradient(ellipse 38% 48% at 85% 75%,var(--orb2),transparent 100%);opacity:.8}
+body:after{opacity:.2}
+.wrap{max-width:none;width:calc(100% - clamp(40px,7vw,180px));margin:auto}
+.header{height:82px;border-bottom:1px solid var(--stroke)}
+.brand{font-size:20px;letter-spacing:-.07em}
+.brand b{color:var(--osaccent)}
+.nav a{color:var(--osmuted)}
+.theme{background:var(--panel);color:var(--osink);border-color:var(--stroke)}
+.main{padding:38px 0 35px}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--osaccent)}
+h1{font-size:clamp(35px,3.5vw,58px);letter-spacing:-.065em;line-height:1.08;margin:13px 0 10px}
+h1 em{background:linear-gradient(100deg,var(--osaccent),var(--osink));background-clip:text}
+.intro{font-size:15px;color:var(--osmuted);max-width:none}
+.sectionhead{margin:36px 0 18px}.sectionhead h2{font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.sectionhead span{color:var(--osmuted)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;grid-auto-flow:dense}
+.tile,.tile.large,.tile.wide{grid-column:span 1;grid-row:span 1;min-height:clamp(210px,16vw,290px);padding:clamp(22px,2vw,32px);border:1px solid var(--stroke);border-radius:23px;background:var(--panel);box-shadow:var(--osshadow),inset 0 1px #ffffff63;backdrop-filter:blur(28px) saturate(130%);-webkit-backdrop-filter:blur(28px) saturate(130%)}
+.tile.large{grid-column:span 2;background:var(--panel)}
+.tile.wide{grid-column:span 1}
+.tile:before{background:linear-gradient(130deg,#ffffff36,transparent 55%)}
+.tile:hover{transform:translateY(-4px);box-shadow:0 24px 60px #0002;border-color:var(--osaccent)}
+.tile .glyph,.tile.large .glyph{width:58px;height:58px;border-radius:17px;font-size:27px;background:var(--tile);color:#263646}
+.tile h3,.tile.large h3{font-size:clamp(21px,1.7vw,30px);letter-spacing:-.045em;color:var(--osink)}
+.tile p,.tile.large p{font-size:clamp(13px,1vw,15px);color:var(--osmuted)}
+.tile .sub{color:var(--osaccent);font-size:10px;letter-spacing:.12em}
+.tile.large h3{font-size:clamp(28px,2.5vw,42px)}
+.arrow{color:var(--osmuted)}
+.footer{color:var(--osmuted);border-color:var(--stroke);margin-top:34px}
+.style-panel{background:var(--panel);color:var(--osink);border-color:var(--stroke)}
+.style-panel p{color:var(--osmuted)}.style-option{background:var(--panel);color:var(--osink);border-color:var(--stroke)}
+@media(min-width:1800px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.tile,.tile.large,.tile.wide{min-height:clamp(245px,15vw,300px)}}
+@media(max-width:1050px){.wrap{width:calc(100% - 48px)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tile.large{grid-column:span 2}.tile,.tile.large,.tile.wide{min-height:210px}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}.header{height:64px}.main{padding:26px 0}.eyebrow{font-size:9px}h1{font-size:clamp(32px,8.8vw,47px)}.intro{font-size:13px}.sectionhead{margin:30px 0 13px}.grid{gap:11px}.tile,.tile.large,.tile.wide{padding:17px;min-height:170px;border-radius:19px}.tile.large{grid-column:span 2;min-height:190px}.tile .glyph,.tile.large .glyph{width:45px;height:45px;font-size:21px;border-radius:13px}.tile h3,.tile.large h3{font-size:19px}.tile p,.tile.large p{font-size:11px}.tile .sub{font-size:9px}.footer{font-size:10px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.tile,.tile.large,.tile.wide{grid-column:span 1}}
+</style></head><body><div class="wrap"><header class="header"><a href="/" class="brand" aria-label="LAOXU HUB 首页">LAOXU<b>.</b> HUB</a><nav class="nav" aria-label="主要导航"><a href="archive.html">数字花园</a><a href="https://github.com/xyh421" target="_blank" rel="noopener noreferrer">GitHub</a><button id="styleToggle" class="theme style-trigger" type="button" aria-label="选择网站配色" aria-expanded="false" aria-controls="stylePanel" title="选择配色">◈</button><button id="theme" class="theme" type="button" aria-label="切换主题" title="切换深浅色主题">☾</button></nav></header><aside id="stylePanel" class="style-panel" hidden aria-label="网站配色选择"><div class="style-heading"><strong>选择喜欢的风格</strong><button id="closeStyle" type="button" aria-label="关闭配色面板">✕</button></div><p>7 种动态背景 · 自动记住你的选择</p><div id="styleOptions" class="style-options"></div></aside><main class="main"><div class="eyebrow">A PERSONAL DIGITAL SPACE</div><h1>Your digital space.<br><em>All in one place.</em></h1><p class="intro">你的个人数字工作台。常用网站，一眼找到，一键直达。</p><div class="sectionhead"><h2>快速访问</h2><span id="count" aria-live="polite"></span></div><section class="grid" id="grid" aria-label="网站导航"></section><p id="empty" class="empty" hidden>没有找到匹配的网站，换个关键词试试。</p></main><footer class="footer"><span>© LAOXU HUB · Made for curiosity.</span><span>Independent · Private · Thoughtfully crafted</span></footer></div>
 <script>
 "use strict";
 const sites=[
@@ -62,7 +107,7 @@ const sites=[
 {title:"好好吃饭",desc:"家庭食谱 · 每周菜单 · 买菜清单",icon:"◉",color:"#ffe2cd",url:"https://food.laoxu.org/",keywords:"food 食谱 菜谱 家庭"},
 {title:"机器人调度挑战",desc:"仓储自动化 · 互动游戏",icon:"⌘",color:"#e7dbff",url:"games/warehouse-control.html",keywords:"arcade robot game warehouse 游戏"},
 {title:"GitHub",desc:"代码、开源项目与实验作品",icon:"{ }",color:"#dbe5ec",url:"https://github.com/xyh421",keywords:"github git repository code 仓库"},
-{title:"Dad's Playbook",desc:"关于成长与家庭的实用手册",icon:"▤",color:"#f9dce7",url:"series/dads-playbook/index.html",layout:"wide",keywords:"dad father 育儿 爸爸 分娩"},
+{title:"Dad's Playbook",desc:"关于成长与家庭的实用手册",icon:"▤",color:"#f9dce7",url:"series/dads-playbook/index.html",layout:"",keywords:"dad father 育儿 爸爸 分娩"},
 {title:"贪吃蛇",desc:"休息一下，玩个经典小游戏",icon:"◌",color:"#d6f3df",url:"games/snake.html",keywords:"snake arcade 游戏"}
 ];
 const grid=document.getElementById("grid"),count=document.getElementById("count"),empty=document.getElementById("empty");const external=url=>/^https?:\/\//.test(url);
@@ -71,9 +116,9 @@ const root=document.documentElement,button=document.getElementById("theme");func
 
 const palettes=[["ice","冰蓝流光","#b8e5ff","#c9c5ff"],["graphite","石墨银雾","#cdd3db","#7b8592"],["ivory","奶油香槟","#f7dec4","#e8dcc8"],["sage","森林晨雾","#bedfc9","#8eac95"],["lavender","紫晶星云","#d7ccfb","#a9a1d9"],["midnight","午夜星空","#25345c","#131b35"],["aurora","极光幻境","#125448","#0a2330"]];
 const panel=document.getElementById("stylePanel"),trigger=document.getElementById("styleToggle"),options=document.getElementById("styleOptions");let palette="ice";
-function applyPalette(id){palette=palettes.some(p=>p[0]===id)?id:"ice";if(palette==="ice")root.removeAttribute("data-palette");else root.dataset.palette=palette;options.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.palette===palette)));try{localStorage.setItem("laoxu-palette",palette)}catch{}}
+function applyPalette(id){palette=palettes.some(p=>p[0]===id)?id:"ice";root.dataset.palette=palette;options.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.palette===palette)));try{localStorage.setItem("laoxu-palette",palette)}catch{}}
 for(const [id,name,c1,c2] of palettes){const b=document.createElement("button");b.type="button";b.className="style-option";b.dataset.palette=id;b.setAttribute("aria-pressed","false");const sw=document.createElement("span");sw.className="style-swatch";sw.style.setProperty("--sw1",c1);sw.style.setProperty("--sw2",c2);sw.setAttribute("aria-hidden","true");b.append(sw,document.createTextNode(name));b.addEventListener("click",()=>applyPalette(id));options.append(b)}
-let storedPalette;try{storedPalette=localStorage.getItem("laoxu-palette")}catch{}applyPalette(storedPalette||"ice");
+let storedPalette;try{storedPalette=localStorage.getItem("laoxu-palette")}catch{}applyPalette(storedPalette||"graphite");
 function closePalette(){panel.hidden=true;trigger.setAttribute("aria-expanded","false")}
 trigger.addEventListener("click",()=>{panel.hidden=!panel.hidden;trigger.setAttribute("aria-expanded",String(!panel.hidden))});
 document.getElementById("closeStyle").addEventListener("click",()=>{closePalette();trigger.focus()});

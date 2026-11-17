@@ -1,11 +1,11 @@
 const themes = [
-  ["graphite", "石墨银雾", "拉丝金属", "#121615"],
-  ["ice", "冰蓝流光", "折射玻璃", "#10263a"],
-  ["ivory", "奶油香槟", "暖色纸张", "#f3e9d7"],
-  ["sage", "森林晨雾", "雾面绿釉", "#192b22"],
-  ["lavender", "紫晶星云", "切面水晶", "#261c3d"],
-  ["midnight", "午夜星空", "深空珐琅", "#0a1024"],
-  ["aurora", "极光幻境", "虹彩玻璃", "#081f24"]
+  ["graphite", "石墨银雾", "石墨柔光", "#191c22"],
+  ["ice", "冰蓝流光", "折射玻璃", "#e9eff7"],
+  ["ivory", "奶油香槟", "暖色日光", "#f3e9d9"],
+  ["sage", "森林晨雾", "雾面绿釉", "#1c302a"],
+  ["lavender", "紫晶星云", "切面水晶", "#2d2346"],
+  ["midnight", "午夜星空", "深空微光", "#11172a"],
+  ["aurora", "极光幻境", "虹彩玻璃", "#10272e"]
 ];
 
 const root = document.documentElement;
@@ -52,7 +52,9 @@ let savedTheme;
 try {
   savedTheme = localStorage.getItem(storageKey);
 } catch {}
-selectTheme(themes.find(([id]) => id === savedTheme) ?? themes[0]);
+const initialTheme = themes.find(([id]) => id === savedTheme)
+  ?? themes.find(([id]) => id === root.dataset.palette);
+selectTheme(initialTheme);
 
 trigger.addEventListener("click", () => {
   dialog.showModal();

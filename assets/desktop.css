@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
-  --bg: #191c22; --ink: #f2f4f8; --muted: #b8bec9; --accent: #a9c8ff;
-  --glass: #363b46a8; --edge: #ffffff32; --reflection: #ffffff12;
-  --wall: radial-gradient(ellipse at 25% 25%, #697485, transparent 58%), radial-gradient(ellipse at 85% 72%, #3c4455, transparent 64%);
+  --bg: #191c22; --ink: #f2f4f8; --muted: #c1c8d5; --accent: #a9c8ff;
+  --glass: #282f3bc2; --edge: #ffffff29; --reflection: #ffffff17;
+  --wall: radial-gradient(ellipse 61% 30% at 42% 18%, #62738e9c, transparent 88%), radial-gradient(ellipse 46% 41% at 92% 64%, #354155af, transparent), linear-gradient(146deg, #344253 2%, #1c2431 49%, #171a22 75%);
   --motion: drift 34s ease-in-out infinite alternate;
   font-family: -apple-system, BlinkMacSystemFont, Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
 }
@@ -66,8 +66,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 @keyframes orbit { to { transform: translate(-6%, 8%) rotate(-6deg); } }
 @keyframes curtain { from { transform: rotate(-14deg) skewY(-9deg); } to { transform: rotate(4deg) skewY(8deg) scale(1.2); } }
 
-.desktop { position: relative; width: min(1440px, calc(100% - clamp(32px, 9vw, 156px))); margin-inline: auto; padding-block: clamp(16px, 3.2vh, 42px) 0; }
-.topbar, .top-actions, .brand, .theme-trigger, .garden-action { display: flex; align-items: center; }
+.desktop { position: relative; width: min(1280px, calc(100% - clamp(32px, 9vw, 156px))); min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; margin-inline: auto; padding-block: clamp(16px, 4vh, 48px) 0; }
+.topbar, .top-actions, .brand, .theme-trigger { display: flex; align-items: center; }
 .topbar, .dock, dialog {
   background: linear-gradient(145deg, var(--reflection), transparent 54%), var(--glass);
   border: 1px solid var(--edge);
@@ -82,59 +82,56 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .clock { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 .theme-trigger { gap: 7px; min-height: 42px; border: 1px solid var(--edge); border-radius: 13px; background: var(--reflection); padding-inline: 10px; font-size: 12px; white-space: nowrap; }
 .theme-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.desktop-heading { padding-block: clamp(24px, 5vh, 58px) 15px; }
-h1 { font-size: clamp(23px, 2.35vw, 35px); font-weight: 690; margin: 0; letter-spacing: -.045em; }
+main { align-content: center; flex: 1; padding-block: clamp(28px, 5vh, 65px) clamp(36px, 16vh, 255px); }
+.desktop-heading { margin-bottom: 18px; }
+h1 { font-size: clamp(23px, 2.15vw, 32px); font-weight: 650; margin: 0; letter-spacing: -.025em; }
 .bento {
   display: grid;
-  grid-template: "garden playbook" minmax(145px, 1fr) "garden food" minmax(145px, 1fr) "tools tools" auto / minmax(0, 2.2fr) minmax(0, 1fr);
-  gap: 15px;
+  grid-template: "garden playbook food" auto "tools tools tools" auto / minmax(0, 1.12fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
 }
 .panel {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
   min-width: 0;
-  border: 1px solid #ffffff56;
-  border-radius: 26px;
-  box-shadow: 0 10px 30px #101b3024;
-  transition: box-shadow .22s, transform .22s;
+  min-height: 184px;
+  padding: clamp(17px, 2.15vw, 32px);
+  border: 1px solid var(--edge);
+  border-radius: 25px;
+  background: radial-gradient(ellipse 85% 125% at 100% 0%, var(--widget-light), transparent 82%), linear-gradient(150deg, var(--reflection), transparent 73%), var(--glass);
+  box-shadow: 0 12px 34px #101b3026, inset 0 1px #ffffff18;
+  backdrop-filter: blur(20px) saturate(132%);
+  transition: box-shadow .22s, border-color .22s, transform .22s;
 }
-.panel:hover { transform: translateY(-2px); box-shadow: 0 15px 32px #101b303b; }
+.panel:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--edge), var(--accent) 33%); box-shadow: 0 16px 35px #101b303b; }
 .tile-title, .tile-description { display: block; }
-.tile-title { font-size: clamp(19px, 1.8vw, 26px); font-weight: 700; line-height: 1.15; letter-spacing: -.04em; }
-.tile-description { margin-top: 5px; font-size: 13px; line-height: 1.5; opacity: .86; }
+.tile-title { font-size: clamp(18px, 1.75vw, 24px); font-weight: 680; line-height: 1.2; letter-spacing: -.025em; }
+.tile-description { margin-top: 6px; font-size: 13px; line-height: 1.55; color: var(--muted); }
 .arrow {
-  position: absolute; z-index: 1; top: 15px; right: 15px;
-  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
-  background: #ffffff73; color: #213044; font-size: 16px;
+  position: absolute; top: 17px; right: 17px;
+  display: grid; place-items: center; width: 31px; height: 31px; border-radius: 50%;
+  background: var(--reflection); border: 1px solid var(--edge); color: var(--muted); font-size: 15px;
+  transition: color .22s, background .22s;
 }
-.garden {
-  grid-area: garden; display: flex; align-items: flex-end;
-  min-height: clamp(320px, 43vh, 485px);
-  padding: clamp(23px, 3.2vw, 50px); color: #fafcf6; background: #232e23;
-}
-.garden-art {
-  position: absolute; z-index: -1; inset: 0;
-  background: linear-gradient(90deg, #111b15ed, #111b1565 67%, transparent), linear-gradient(0deg, #111b15a0, transparent 58%), url("garden-cover.webp") 60% 46% / cover;
-}
-.garden .arrow { color: #fff; background: #1023195c; border: 1px solid #ffffff63; backdrop-filter: blur(10px); }
-.garden .tile-title { font-size: clamp(30px, 3.6vw, 52px); }
-.garden .tile-description { font-size: clamp(13px, 1.15vw, 16px); }
-.garden-action { width: fit-content; gap: 11px; margin-top: 16px; background: #fff; color: #202d24; border-radius: 999px; padding: 8px 12px; font-size: 12px; font-weight: 650; }
-.playbook, .food { display: grid; align-content: center; justify-items: start; gap: 11px; padding: clamp(15px, 2vw, 30px); }
-.playbook { grid-area: playbook; background: linear-gradient(128deg, #fff7e9, #f1d9c9); color: #3b2b25; }
-.food { grid-area: food; background: linear-gradient(128deg, #f2f7ea, #d6e6d9); color: #263a31; }
-.widget-icon { position: relative; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 13px; color: white; box-shadow: inset 0 1px #ffffff70, 0 4px 10px #242a3024; }
-.book { background: linear-gradient(#df9e7e, #9e5344); }
+.panel:hover .arrow { color: var(--ink); background: var(--glass); }
+.garden { grid-area: garden; --widget-light: #acd17732; }
+.playbook { grid-area: playbook; --widget-light: #f0b08a30; }
+.food { grid-area: food; --widget-light: #a1cfbd35; }
+.widget-icon { position: relative; display: grid; place-items: center; flex: none; width: 52px; height: 52px; border-radius: 16px; color: white; box-shadow: inset 0 1px #ffffff81, 0 5px 10px #101c3038; }
+.garden-art { background: #344228 url("garden-cover.webp") 79% 24% / auto 114%; filter: brightness(1.23) saturate(.84); }
+.book { background: linear-gradient(155deg, #d59679, #a75f52); }
 .book::before { content: ""; width: 16px; height: 18px; border: 2px solid; border-left-width: 4px; border-radius: 3px; }
-.book::after { content: ""; position: absolute; width: 8px; height: 2px; top: 15px; left: 17px; background: currentColor; box-shadow: 0 4px currentColor; }
+.book::after { content: ""; position: absolute; width: 8px; height: 2px; top: 21px; left: 23px; background: currentColor; box-shadow: 0 4px currentColor; }
 .plate { background: linear-gradient(#83ad97, #47765e); }
 .plate::before { content: ""; width: 18px; height: 18px; border: 2px solid; border-radius: 50%; }
 .plate::after { content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid; border-radius: 50%; }
-.tools { grid-area: tools; min-width: 0; margin: 12px 0 0; }
-.tools h2 { margin: 0 0 10px; font-size: 15px; font-weight: 680; }
-.dock { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; border-radius: 26px; padding: 12px; max-width: 700px; margin-inline: auto; }
-.tools h2 { width: min(100%, 700px); margin-inline: auto; }
+.tools { grid-area: tools; min-width: 0; margin: clamp(22px, 5vh, 54px) 0 0; }
+.dock { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; border-radius: 25px; padding: 9px; max-width: 620px; margin-inline: auto; }
 .app {
   min-width: 0; display: grid; justify-items: center; align-content: start; gap: 9px;
   border-radius: 16px; padding: 8px 4px; text-align: center;
@@ -168,7 +165,7 @@ h1 { font-size: clamp(23px, 2.35vw, 35px); font-weight: 690; margin: 0; letter-s
 .robot::after { content: ""; position: absolute; bottom: 4px; left: 8px; width: 7px; height: 2px; border-radius: 2px; background: currentColor; }
 .pixels { position: relative; width: 26px; height: 24px; }
 .pixels::before { content: ""; position: absolute; top: 3px; left: 2px; width: 6px; height: 6px; border-radius: 1px; background: currentColor; box-shadow: 0 7px currentColor, 7px 7px currentColor, 14px 7px currentColor, 14px 14px currentColor, 21px 0 #ffdbaf; }
-.footer { display: flex; justify-content: space-between; gap: 12px; padding-block: 26px 20px; color: var(--muted); font-size: 11px; }
+.footer { display: flex; justify-content: space-between; gap: 12px; padding-block: 15px 23px; color: var(--muted); font-size: 11px; }
 
 dialog {
   width: min(540px, calc(100% - 28px)); max-height: calc(100% - 28px);
@@ -191,14 +188,15 @@ dialog::backdrop { background: #0b17265c; }
   .desktop { width: calc(100% - 28px); }
   .topbar { border-radius: 16px; }
   .clock { display: none; }
-  .desktop-heading { padding-block: 23px 11px; }
+  main { align-content: start; padding-block: clamp(24px, 6vh, 48px) 18px; }
+  .desktop-heading { margin-bottom: 12px; }
   .bento { grid-template: "garden garden" auto "playbook food" auto "tools tools" auto / minmax(0, 1fr) minmax(0, 1fr); gap: 11px; }
-  .garden { min-height: 250px; }
   .panel, .dock { border-radius: 20px; }
-  .playbook, .food { padding: 13px; align-content: start; gap: 10px; }
+  .panel { padding: 14px; gap: 16px; min-height: 140px; }
+  .garden { flex-direction: row; justify-content: flex-start; align-items: center; min-height: 114px; padding-right: 43px; }
   .tile-description { font-size: 12px; }
   .arrow { top: 10px; right: 10px; width: 27px; height: 27px; }
-  .tools { margin-top: 7px; }
+  .tools { margin-top: 14px; }
   .dock { gap: 2px; padding: 6px; }
   .app { padding-inline: 0; font-size: 11px; gap: 6px; }
   .app-icon { width: clamp(38px, 11vw, 49px); border-radius: 13px; }
